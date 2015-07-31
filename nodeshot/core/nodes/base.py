@@ -9,6 +9,7 @@ from rest_framework_hstore.serializers import HStoreSerializer
 from nodeshot.core.base.serializers import DynamicRelationshipsMixin
 from nodeshot.core.base.mixins import ACLMixin
 from nodeshot.core.layers.models import Layer
+from nodeshot.core.nodes.models import Status
 
 from .settings import REVERSION_ENABLED
 
@@ -19,7 +20,7 @@ class ExtensibleNodeSerializer(DynamicRelationshipsMixin, HStoreSerializer):
                                          queryset=Layer.objects.all())
     layer_name = serializers.ReadOnlyField(source='layer.name')
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
-    status = serializers.SlugRelatedField(slug_field='slug', read_only=True)
+    status = serializers.SlugRelatedField(slug_field='slug', queryset=Status.objects.all())
     geometry = geoserializers.GeometryField(label=_('coordinates'))
     access_level = serializers.ReadOnlyField(source='get_access_level_display')
     relationships = serializers.SerializerMethodField()
