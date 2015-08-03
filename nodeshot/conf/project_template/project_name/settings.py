@@ -80,9 +80,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER  # used for error reporting
 
 LEAFLET_CONFIG.update({
-    'DEFAULT_CENTER': (49.06775, 30.62011),
-    'DEFAULT_ZOOM': 4,
-    'MIN_ZOOM': 1,
+    'DEFAULT_CENTER': (41.85, 12.416667),
+    'DEFAULT_ZOOM': 6,
+    'MIN_ZOOM': 5,
     'MAX_ZOOM': 18,
     # Uncomment to customize map tiles
     # More information here: https://github.com/makinacorpus/django-leaflet#default-tiles-layer
