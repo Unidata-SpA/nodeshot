@@ -95,7 +95,7 @@ class NodeDetail(RetrieveUpdateDestroyAPIView):
     """
     lookup_field = 'slug'
     serializer_class = NodeSerializer
-    authentication_classes = (authentication.SessionAuthentication, )
+    authentication_classes = (authentication.SessionAuthentication, authentication.TokenAuthentication)
     permission_classes = (IsOwnerOrReadOnly, )
     queryset = Node.objects.published().select_related('status', 'user', 'layer')
 
